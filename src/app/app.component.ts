@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SPA-Angular';
+  name = 'Ivan';
+  
+  getNameAlert (myName: string) {
+    alert(myName)
+  }
+  currentValue = "";
+  getVal(val: string){
+    this.currentValue = val;
+    val ='';
+  }
 }
