@@ -1,0 +1,14 @@
+<div class="posts-page">
+    <mat-card class="mat-elevation-z12">
+        <mat-card-title style="text-align:center;">Pets</mat-card-title>
+        <div *ngIf="fsData.length==0" style="font-size: 30px;">No Pets yet be the first one to add a pet.</div>
+        <mat-tab-group *ngIf="fsData.length!=0" mat-stretch-tabs class="example-stretched-tabs">
+            <mat-tab label="Active Posts">
+                <app-post *ngFor="let data of activePosts" [data]="data"></app-post>
+            </mat-tab>
+            <mat-tab label="Nonacrive Posts">
+                <app-post *ngFor="let data of nonactivePosts" [data]="data"></app-post>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card>
+</div>

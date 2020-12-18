@@ -1,0 +1,72 @@
+<mat-card class="profile-form">
+    <div *ngIf="!userInformation&&!isloggedInUserProfile">User has no personal info</div>
+    <div *ngIf="!userInformation&&isloggedInUserProfile">
+        <div class="add-personalInformation-page">
+            <mat-card>
+                <mat-card-content>
+                    <mat-card-title style="text-align:center;">Add personal data to create your profile</mat-card-title>
+                    <form [formGroup]="infoForm" (ngSubmit)="addInfo(infoForm)">
+                        <mat-form-field>
+                            <input matInput placeholder="Full Name" name="name" formControlName="name">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="City" name="city" formControlName="city">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Phone number" name="phone" formControlName="phone">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="ImageURL" name="imageURL" formControlName="imageURL">
+                        </mat-form-field>
+                        <h4 *ngIf="addInfoFailed" style="color: #f00;">Invalid information.Pleace fill all the forms and submit again!</h4>
+                        <h4 *ngIf="succesfullyAddedUserInfo" style="color: green;">Information was succesfully added!!</h4>
+                        <button mat-raised-button color="primary" class="post-button">
+                                Add Information
+                        </button>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div *ngIf="userInformation">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image" style="background-image: url({{userInformation.imageURL}});"></div>
+            <mat-card-title>{{userInformation.name}}</mat-card-title>
+            <mat-card-subtitle>From: {{userInformation.city}}</mat-card-subtitle>
+            <mat-card-content class="rating-bar-holder">
+                Rating:
+                <mat-progress-bar class="rating-bar" mode="determinate" value="{{rating}}"></mat-progress-bar>
+            </mat-card-content>
+        </mat-card-header>
+        <form *ngIf="!isloggedInUserProfile" [formGroup]="postForm" (ngSubmit)="addReview(postForm)">
+            <mat-form-field>
+                <input matInput placeholder="Review" name="review" [(ngModel)]="review" formControlName="review">
+            </mat-form-field>
+            <h4 *ngIf="addFailed" style="color: #f00;">Invalid review.Cant have | in review !</h4>
+            <h4 *ngIf="succesAddReview" style="color: green;">Succesfully added the review !</h4>
+            <button mat-raised-button color="primary" class="post-button">
+                Leave a review about this person.
+            </button>
+        </form>
+        <button *ngIf="!isloggedInUserProfile" mat-stroked-button class="profile-btns" (click)="upVote()">Up-vote this person</button>
+        <button *ngIf="!isloggedInUserProfile" mat-stroked-button class="profile-btns" (click)="downVote()">Down-vote this person</button>
+        <button *ngIf="isloggedInUserProfile" mat-stroked-button class="profile-btns" (click)="editPIBool=true">Edit personal information</button>
+        <app-edit-personal-info *ngIf="editPIBool" (onDataUpdate)="changeEditInfoBool($event)" [userInformation]="userInformation" [editPIBool]="editPIBool"></app-edit-personal-info>
+        <mat-card class="mat-elevation-z12">
+            <mat-card-title style="text-align:center;">User posts and comments</mat-card-title>
+            <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+                <mat-tab label="Active posts">
+                    <app-post *ngFor="let data of activeUserPosts" [data]="data" reviewsRaw></app-post>
+                </mat-tab>
+                <mat-tab label="Nonactive  posts">
+                    <app-post *ngFor="let data of nonactiveUserPosts" [data]="data"></app-post>
+                </mat-tab>
+                <mat-tab label="Reviews">
+                    <app-review *ngFor="let data of reviews" [data]="data" [reviewsRaw]="reviewsRaw"></app-review>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card>
+
+    </div>
+
+</mat-card>

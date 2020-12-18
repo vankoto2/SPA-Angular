@@ -1,0 +1,30 @@
+<div class="holder">
+    <mat-card class="post">
+
+        <div class="post-content">
+            <mat-card-title class="post-title" style="text-align:left;">Buy/Adopt {{data.nOfSeats}} the {{data.from}} !</mat-card-title>
+            <mat-card-content>
+                <div class="post-details">{{data.details}}</div>
+            </mat-card-content>
+            <button *ngIf="!(currentUID==data.uid)&&currentUID!=null" mat-stroked-button class="post-contact-button" (click)="showContact=!showContact">Contact</button>
+            <button *ngIf="currentUID==data.uid" mat-stroked-button class="post-comment-button" (click)="removePost(data)">Delete</button>
+            <button *ngIf="currentUID==data.uid" [routerLink]="['/post-edit',data.id]" mat-stroked-button class="post-comment-button">Edit</button>
+            <button *ngIf="currentUID!=null" [routerLink]="['/post',data.id]" mat-stroked-button class="post-comment-button">Details</button>
+            <button *ngIf="currentUID==data.uid&&data.active" mat-stroked-button class="post-comment-button" (click)="updatePost(data,false)">Make Nonactive</button>
+            <button *ngIf="currentUID==data.uid&&!(data.active)" mat-stroked-button class="post-comment-button" (click)="updatePost(data,true)">Make Active</button>
+            <mat-card-content>
+                <div *ngIf="userInformation&&showContact">Phone : {{userInformation.phone}}</div>
+                <div *ngIf="userEmail&&showContact">Email : {{userEmail}}</div>
+            </mat-card-content>
+        </div>
+        <mat-card *ngIf="!userInformation" class="post-poster">
+            <mat-card-title class="poster-name" style="text-align:left;">Poster does not have personal information!</mat-card-title>
+        </mat-card>
+        <mat-card *ngIf="userInformation&&showProfile" class="post-poster">
+            <mat-card-title class="poster-name" style="text-align:left;">Pet owner : <br> <br> <br> {{userInformation.name}}</mat-card-title>
+            <mat-card-content class="post=content">
+                <button *ngIf="currentUID!=null" [routerLink]="['/profile',data.uid]" mat-stroked-button class="poster-profile-button">View Profile</button>
+            </mat-card-content>
+        </mat-card>
+    </mat-card>
+</div>

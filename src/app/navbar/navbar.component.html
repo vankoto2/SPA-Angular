@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+    <span><mat-icon>Buy/Adopt</mat-icon>Pet</span>
+    <div class="spacer"></div>
+    <a *ngIf="!userAuthBool" routerLink="about-page" mat-raised-button>About</a>
+    <a routerLink="posts" mat-raised-button>Pets</a>
+    <a *ngIf="userAuthBool" [routerLink]="['/profile',uid]" mat-raised-button>Owner Profile</a>
+    <a *ngIf="!userAuthBool" routerLink="register" mat-raised-button color="accent">SignIn/SignUp</a>
+    <a *ngIf="userAuthBool" routerLink="create-post" mat-raised-button>Add Pet</a>
+    <a *ngIf="userAuthBool" mat-raised-button color="accent" (click)="signOut()">Logout</a>
+</mat-toolbar>

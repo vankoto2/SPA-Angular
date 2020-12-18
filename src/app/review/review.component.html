@@ -1,0 +1,22 @@
+<mat-card class="comment">
+    <div>
+        <mat-card-title *ngIf="reviewPosterInformation">{{reviewPosterInformation.name }} :</mat-card-title>
+
+        <mat-card-title *ngIf="!reviewPosterInformation">{{'Anonymous - This person has no personal information'}}</mat-card-title>
+        <button *ngIf="data.posterId==currentUID" mat-stroked-button class="review-btns" (click)="editReviewBool = true">Edit review</button>
+        <button *ngIf="data.posterId==currentUID" mat-stroked-button class="review-btns" (click)="deleteReview()">Delete review</button>
+        <mat-card-content>
+            <div>{{data.review}}</div>
+        </mat-card-content>
+        <form *ngIf="editReviewBool" [formGroup]="postForm" (ngSubmit)="editReview(postForm)">
+            <mat-form-field>
+                <input matInput placeholder="Review" [(ngModel)]="review" name="review" formControlName="review">
+            </mat-form-field>
+            <h4 *ngIf="addFailed" style="color: #f00;">Invalid review.Cant have | in review ar be a empty sting!</h4>
+            <h4 *ngIf="succesAddReview" style="color: green;">Succesfully added the review !</h4>
+            <button mat-raised-button color="primary" class="post-button">
+                Edit Review.
+            </button>
+        </form>
+    </div>
+</mat-card>

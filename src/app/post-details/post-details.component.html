@@ -1,0 +1,59 @@
+<mat-card *ngIf="postData" class="post-details-form">
+
+    <mat-card class="mat-elevation-z12">
+        <mat-card-header>
+            <mat-card-title>Name : {{postData.nOfSeats}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="rating-bar-holder">
+            <div>Breed: {{postData.to}}</div>
+            <div>Date of bird : {{postData.timeOfDeparture}}</div>
+            
+            <div>Price : {{postData.luggage}} euro</div>
+            <div>Pet type: {{postData.from}}</div>
+            <div>Details : {{postData.details}}</div>
+            <div *ngIf="postData.active">Post is Active</div>
+            <div *ngIf="!postData.active">Post is not Active</div>
+        </mat-card-content>
+    </mat-card>
+
+    <button *ngIf="currentUID==postData.uid&&!postData.active" mat-stroked-button class="profile-btns"
+        (click)="updatePost(postData,true)">Make Active</button>
+    <button *ngIf="currentUID==postData.uid&&postData.active" mat-stroked-button class="profile-btns"
+        (click)="updatePost(postData,false)">Make Nonactive</button>
+    <button *ngIf="currentUID==postData.uid" mat-stroked-button class="profile-btns"
+        (click)="removePost(postData)">Delete</button>
+    <button *ngIf="currentUID!=postData.uid" mat-stroked-button class="profile-btns"
+        (click)="showContacts = !showContacts">Contact</button>
+    <button *ngIf="currentUID==postData.uid" [routerLink]="['/post-edit',postData.id]" mat-stroked-button
+        class="profile-btns">Edit</button>
+
+    <mat-card *ngIf="showContacts" lass="contactCard">
+        <mat-card-header>
+            <mat-card-title *ngIf="userEmail">User Email :{{userEmail}}</mat-card-title>
+            <mat-card-title *ngIf="userInformation">User Phone :{{userInformation.phone}}</mat-card-title>
+        </mat-card-header>
+
+    </mat-card>
+
+    <mat-card *ngIf="!userInformation" class="mat-elevation-z12">
+        <mat-card-header>
+            <mat-card-title>User has no personal info</mat-card-title>
+        </mat-card-header>
+    </mat-card>
+    <mat-card *ngIf="userInformation" class="mat-elevation-z12">
+
+        <div mat-card-avatar class="example-header-image" style="background-image: url({{userInformation.imageURL}});">
+        </div>
+        <mat-card-title>{{userInformation.name}}</mat-card-title>
+        <mat-card-subtitle>From: {{userInformation.city}}</mat-card-subtitle>
+        <mat-card-content class="rating-bar-holder">
+            Rating:
+            <mat-progress-bar class="rating-bar" mode="determinate" value="{{rating}}"></mat-progress-bar>
+        </mat-card-content>
+        <button mat-stroked-button class="profile-btns" [routerLink]="['/profile',postData.uid]">View Profile</button>
+
+    </mat-card>
+
+
+
+</mat-card>

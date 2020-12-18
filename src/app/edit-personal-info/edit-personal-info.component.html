@@ -1,0 +1,19 @@
+<form [formGroup]="updateinfoForm" (ngSubmit)="updateInfo(updateinfoForm)">
+    <mat-form-field>
+        <input matInput placeholder="Full Name" [(ngModel)]="name" name="name" formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="City" [(ngModel)]="city" name="city" formControlName="city">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Phone number" [(ngModel)]="phone" name="phone" formControlName="phone">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="ImageURL" [(ngModel)]="imageURL" name="imageURL" formControlName="imageURL">
+    </mat-form-field>
+    <h4 *ngIf="updateInfoFailed" style="color: #f00;">Invalid information.Pleace fill all the forms and submit again!</h4>
+    <h4 *ngIf="succesfullyUpdatedUserInfo" style="color: green;">Information was succesfully added!!</h4>
+    <button mat-raised-button color="primary" class="post-button">
+            Add Information
+    </button>
+</form>

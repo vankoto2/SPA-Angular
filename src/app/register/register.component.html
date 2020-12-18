@@ -1,0 +1,50 @@
+<div class="login-page">
+    <mat-card class="mat-elevation-z12">
+        <mat-card-title style="text-align:center;">SignIn/SignUp</mat-card-title>
+        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+            <mat-tab label="Sign In">
+                <mat-card-content>
+                    <form [formGroup]="signInForm" (ngSubmit)="signIn(signInForm)">
+                        <mat-form-field>
+                            <input matInput placeholder="Email" name="email" formControlName="email">
+                            <mat-icon matSuffix>email</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Password" type="password" minlength="6" name="password" formControlName="password">
+                            <mat-icon matSuffix>lock</mat-icon>
+                        </mat-form-field>
+                        <mat-checkbox>Remember Me!</mat-checkbox>
+                        <button mat-raised-button color="primary" class="login-button">
+                            Sign In
+                        </button>
+                    </form>
+                    <h4 *ngIf="signInFailed" style="color: #f00;">Sign in failed. Please try again. </h4>
+                </mat-card-content>
+            </mat-tab>
+            <mat-tab label="Sign Up">
+                <mat-card-content>
+                    <form [formGroup]="signUpForm" (ngSubmit)="signUp(signUpForm)">
+
+                        <mat-form-field>
+                            <input matInput placeholder="Email" name="email" formControlName="email">
+                            <mat-icon matSuffix>email</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Password" type="password" minlength="6" name="password" formControlName="password">
+                            <mat-icon matSuffix>lock</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Repeat Password" type="password" minlength="6" name="repeatpassword" formControlName="repeatpassword">
+                            <mat-icon matSuffix>lock</mat-icon>
+                        </mat-form-field>
+                        <mat-checkbox>Remember Me!</mat-checkbox>
+                        <button mat-raised-button color="primary" class="login-button">
+                            Sign Up
+                        </button>
+                    </form>
+                    <h4 *ngIf="signInFailed" style="color: #f00;">Sign up failed. Please try again with another email or check if your passwords match.Your passwords can't be less than 6. </h4>
+                </mat-card-content>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card>
+</div>
