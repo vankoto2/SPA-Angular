@@ -1,0 +1,59 @@
+.post-content {
+    position: absolute;
+    left: 16px;
+    width: 500px;
+    height: 70%;
+    padding-top: 10px;
+}
+
+.post-contact-button {
+    margin-right: 16px;
+}
+
+.post-comment-button {
+    margin-right: 16px;
+}
+
+.post-details {
+    word-wrap: break-word;
+    padding-top: 16px;
+}
+
+.poster-details {
+    word-wrap: break-word;
+}
+
+.post-poster {
+    position: absolute;
+    background-color: #fc4040;
+    color: white;
+    right: 16px;
+    width: 200px;
+    height: 70%;
+}
+
+button {
+    color:  #FA681E;
+}
+
+.holder {
+    margin: 16px;
+}
+
+.post {
+    position: relative;
+    height: 200px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.poster-profile-button {
+    margin-top: 20px;
+    border-color: orangered;
+    color: white;
+}

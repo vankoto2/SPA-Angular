@@ -1,0 +1,35 @@
+.comment {
+    margin: 20px;
+}
+
+.review-btns {
+    margin-right: 20px;
+}
+
+.post-button {
+    margin-top: 20px;
+    display: block;
+    width: 50%;
+    margin: 20px auto;
+}
+
+mat-card-content {
+    margin-top: 20px;
+}
+
+mat-form-field,
+mat-checkbox {
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+
+
+button {
+    background-color: #fc4040;
+    color: white;
+
+    -moz-box-shadow: inset 0 -10px 10px -10px #8310a0;
+    -webkit-box-shadow: inset 0 -10px 10px -10px #8310a0;
+    box-shadow: inset 0 -10px 10px -10px #8310a0;
+}

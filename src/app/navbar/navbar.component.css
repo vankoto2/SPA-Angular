@@ -1,0 +1,22 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+a {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+mat-icon {
+    margin-right: 10px;
+}
+
+mat-toolbar {
+    background-color: #fc4040;
+    color: white;
+
+    -moz-box-shadow: inset 0 -10px 10px -10px #8310a0;
+    -webkit-box-shadow: inset 0 -10px 10px -10px #8310a0;
+    box-shadow: inset 0 -10px 10px -10px #8310a0;
+    
+}
